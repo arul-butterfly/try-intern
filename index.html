@@ -1,0 +1,316 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Institute - Home</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        }
+        body {
+        line-height: 1.6;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        background: #1a237e;
+        color: white;
+        }
+        .navbar h1 {
+        font-size: 1.5rem;
+        }
+        .navbar ul {
+        display: flex;
+        gap: 20px;
+        list-style: none;
+        }
+        .navbar a {
+        color: white;
+        font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+        text-align: center;
+        padding: 80px 20px;
+        background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b') no-repeat center/cover;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        }
+        .hero h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        }
+        .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        }
+        .hero button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        background: #ff9800;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+
+        /* Features */
+        .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 50px;
+        background: #f5f5f5;
+        }
+        .feature-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .feature-card h3 {
+        margin-bottom: 10px;
+        color: #1a237e;
+        }
+
+        /* Testimonials */
+        .testimonials {
+        padding: 50px;
+        text-align: center;
+        }
+        .testimonial {
+        margin: 20px auto;
+        max-width: 600px;
+        background: #eeeeee;
+        padding: 20px;
+        border-radius: 10px;
+        font-style: italic;
+        }
+
+        /* Registration Section */
+        .register {
+        background: url('https://images.unsplash.com/photo-1529070538774-1843cb3265df') no-repeat center/cover;
+        padding: 80px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+        }
+        .register::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        }
+        .register-content {
+        position: relative;
+        max-width: 500px;
+        margin: auto;
+        background: rgba(255,255,255,0.9);
+        padding: 30px;
+        border-radius: 10px;
+        color: #333;
+        }
+        .register-content h2 {
+        margin-bottom: 15px;
+        color: #1a237e;
+        }
+        .register-content input, 
+        .register-content select, 
+        .register-content button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        }
+        .register-content button {
+        background: #ff9800;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+        background: #1a237e;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        }
+        .footer a {
+        color: #ff9800;
+        }
+
+        /* Congratulations Popup */
+        .congrats {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 1.5rem;
+        color: #1a237e;
+        font-weight: bold;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        opacity: 0;
+        transition: all 0.5s ease-in-out;
+        }
+        .congrats.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        }
+
+        /* Confetti burst */
+        .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: red;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        animation: burst 1s ease-out forwards;
+        z-index: 999;
+        }
+        @keyframes burst {
+        to {
+            transform: translate(var(--x), var(--y)) scale(0.5);
+            opacity: 0;
+        }
+        }
+    </style>
+    </head>
+    <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>IELTS Institute</h1>
+        <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#register">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Achieve Your Dream IELTS Score</h2>
+        <p>Join our expert-led institute and prepare with confidence.</p>
+        <button onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">Get Started</button>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature-card">
+        <h3>Speaking Practice</h3>
+        <p>Improve your speaking fluency with daily mock interviews.</p>
+        </div>
+        <div class="feature-card">
+        <h3>Mock Tests</h3>
+        <p>Access full-length mock tests to track your progress.</p>
+        </div>
+        <div class="feature-card">
+        <h3>AI Band Score</h3>
+        <p>Get instant AI-powered evaluation of your performance.</p>
+        </div>
+        <div class="feature-card">
+        <h3>Flexible Learning</h3>
+        <p>Learn at your own pace with online and offline options.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Students Say</h2>
+        <div class="testimonial">“The best IELTS coaching ever! I scored Band 8.” – Priya</div>
+        <div class="testimonial">“Amazing teachers and mock tests helped me so much!” – Rahul</div>
+        <div class="testimonial">“Flexible timings and great study materials.” – Ayesha</div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="register" id="register">
+        <div class="register-content">
+        <h2>Register Now</h2>
+        <p>Fill in your details and start your IELTS journey with us!</p>
+        <form id="regForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <select required>
+            <option value="">Select Course</option>
+            <option value="ielts">IELTS</option>
+            <option value="pte">PTE</option>
+            <option value="spoken">Spoken English</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+        </div>
+    </section>
+
+    <!-- Congrats Popup -->
+    <div class="congrats" id="congratsBox">🎉 Congratulations! 🎉<br>You have successfully registered.</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 IELTS Institute. All Rights Reserved.</p>
+        <p>Contact: <a href="mailto:info@ieltsinstitute.com">info@ieltsinstitute.com</a></p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("regForm");
+        const congratsBox = document.getElementById("congratsBox");
+
+        form.addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent page reload
+
+        // Show Congratulations popup
+        congratsBox.classList.add("show");
+
+        // Generate confetti burst
+        for (let i = 0; i < 40; i++) {
+            let confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+
+            // Random color
+            confetti.style.backgroundColor = ["red","blue","green","yellow","purple","orange","pink"][Math.floor(Math.random()*7)];
+
+            // Random direction
+            let angle = Math.random() * 2 * Math.PI;
+            let radius = 200 + Math.random() * 200;
+            confetti.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
+            confetti.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
+
+            document.body.appendChild(confetti);
+
+            // Remove after animation
+            setTimeout(() => confetti.remove(), 1000);
+        }
+
+        // Hide popup after 3s
+        setTimeout(() => {
+            congratsBox.classList.remove("show");
+        }, 3000);
+
+        form.reset();
+        });
+    </script>
+
+    </body>
+    </html>
